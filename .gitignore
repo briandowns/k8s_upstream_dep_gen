@@ -1,0 +1,11 @@
+*.o
+*.so
+*.dylib
+
+.vscode
+
+bin/
+tmp/
+
+*.out
+*.*.out
