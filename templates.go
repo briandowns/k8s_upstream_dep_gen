@@ -40,7 +40,6 @@ steps:
   when:
     event:
     - tag
-    - push
 
 - name: push
   image: briandowns/rancher-build-base:v0.1.0
@@ -58,7 +57,6 @@ steps:
   when:
     event:
     - tag
-    - push
 
 - name: scan
   image: briandowns/rancher-build-base:v0.1.0
@@ -81,7 +79,6 @@ steps:
   when:
     event:
     - tag
-    - push
 
 services:
 - name: docker
