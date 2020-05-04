@@ -13,3 +13,13 @@ make
 ```sh
 make install
 ```
+
+## Run
+
+```sh
+./dep_gen rancher/fips-image-build-flannel
+```
+
+```sh
+docker run --rm -v $PWD:$PWD -w $PWD briandowns/dep_gen:v0.1.0 dep_gen rancher/fips-image-build-flannel
+```

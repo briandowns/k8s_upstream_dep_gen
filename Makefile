@@ -5,7 +5,6 @@ BINDIR = bin
 BINARY = dep_gen
 
 VERSION = v0.1.0
-
 PREFIX = /usr/local
 
 LDFLAGS = -ldflags "-X main.gitSHA=$(shell git rev-parse HEAD) -X main.version=$(VERSION) -X main.name=$(BINARY)"
