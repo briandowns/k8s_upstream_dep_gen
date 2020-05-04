@@ -36,7 +36,7 @@ steps:
     path: /var/run
   commands:
   - sleep 20
-  - make
+  - TAG=${DRONE_TAG} make
   when:
     event:
     - tag
