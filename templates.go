@@ -87,7 +87,7 @@ services:
 
 volumes:
   - name: docker
-	temp: {}
+  temp: {}
 `
 
 const dockerfileTemplate = `ARG UBI_IMAGE=registry.access.redhat.com/ubi7/ubi-minimal:latest
