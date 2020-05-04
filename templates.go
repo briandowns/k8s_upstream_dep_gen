@@ -47,7 +47,6 @@ steps:
   - name: docker
     path: /var/run
   commands:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - make image-push
   environment:
     DOCKER_USERNAME:
