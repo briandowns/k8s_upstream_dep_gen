@@ -81,11 +81,14 @@ steps:
 
 services:
 - name: docker
-  image: briandowns/rancher-build-base:v0.1.0
+  image: docker:dind
   privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
 
 volumes:
-  - name: docker
+  - name: dockersock
     temp: {}
 `
 
