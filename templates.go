@@ -47,7 +47,7 @@ steps:
   - name: docker
     path: /var/run
   commands:
-  - make image-push
+  - TAG=${DRONE_TAG} make image-push
   environment:
     DOCKER_USERNAME:
       from_secret: docker_username
@@ -63,7 +63,7 @@ steps:
   - name: docker
     path: /var/run
   commands:
-  - make image-scan
+  - TAG=${DRONE_TAG} make image-scan
   when:
     event:
     - tag
