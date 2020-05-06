@@ -74,7 +74,7 @@ steps:
   - name: docker
     path: /var/run
   commands:
-  - make image-manifest
+  - TAG=${DRONE_TAG} make image-manifest
   when:
     event:
     - tag
