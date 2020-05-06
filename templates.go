@@ -17,7 +17,7 @@ image-scan:
 .PHONY: image-manifest
 image-manifest:
 	docker image inspect %[1]s:$(TAG)
-	DOCKER_CLI_EXPERIMENTAL=enabled docker manifest create fips-image-build-flannel:$(TAG) \
+	DOCKER_CLI_EXPERIMENTAL=enabled docker manifest create %[1]s:$(TAG) \
 		$(shell docker image inspect %[1]s:$(TAG) | jq -r \'.[] | .RepoDigests[0]\')
 `
 
