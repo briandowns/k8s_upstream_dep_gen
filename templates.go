@@ -12,7 +12,7 @@ image-push:
 
 .PHONY: scan
 image-scan:
-	trivy --severity $(SEVERITIES) --no-progress --ignore-unfixed %[1]s:$(TAG)
+	trivy --severity $(SEVERITIES) --no-progress --skip-update --ignore-unfixed %[1]s:$(TAG)
 
 .PHONY: image-manifest
 image-manifest:
@@ -47,6 +47,7 @@ steps:
   - name: docker
     path: /var/run
   commands:
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - TAG=${DRONE_TAG} make image-push
   environment:
     DOCKER_USERNAME:
