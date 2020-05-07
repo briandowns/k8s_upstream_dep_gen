@@ -18,7 +18,7 @@ image-scan:
 image-manifest:
 	docker image inspect %[1]s:$(TAG)
 	DOCKER_CLI_EXPERIMENTAL=enabled docker manifest create %[1]s:$(TAG) \
-		$(shell docker image inspect %[1]s:$(TAG) | jq -r \'.[] | .RepoDigests[0]\')
+		$(shell docker image inspect %[1]s:$(TAG) | jq -r '.[] | .RepoDigests[0]')
 `
 
 const droneTemplate = `---
@@ -30,7 +30,7 @@ platform:
 
 steps:
 - name: build
-  image: briandowns/rancher-build-base:v0.1.0
+  image: briandowns/rancher-build-base:v0.1.1
   volumes:
   - name: docker
     path: /var/run
@@ -42,7 +42,7 @@ steps:
     - tag
 
 - name: push
-  image: briandowns/rancher-build-base:v0.1.0
+  image: briandowns/rancher-build-base:v0.1.1
   volumes:
   - name: docker
     path: /var/run
@@ -58,7 +58,7 @@ steps:
     - tag
 
 - name: scan
-  image: briandowns/rancher-build-base:v0.1.0
+  image: briandowns/rancher-build-base:v0.1.1
   volumes:
   - name: docker
     path: /var/run
@@ -69,7 +69,7 @@ steps:
     - tag
 
 - name: manifest
-  image: briandowns/rancher-build-base:v0.1.0
+  image: briandowns/rancher-build-base:v0.1.1
   volumes:
   - name: docker
     path: /var/run
@@ -93,7 +93,7 @@ volumes:
 `
 
 const dockerfileTemplate = `ARG UBI_IMAGE=registry.access.redhat.com/ubi7/ubi-minimal:latest
-ARG GO_IMAGE=briandowns/rancher-build-base:v0.1.0
+ARG GO_IMAGE=briandowns/rancher-build-base:v0.1.1
 
 FROM ${UBI_IMAGE} as ubi
 
