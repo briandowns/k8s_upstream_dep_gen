@@ -103,10 +103,10 @@ RUN apt update     && \
     apt upgrade -y && \ 
     apt install -y ca-certificates git
 RUN git clone --depth=1 [UPSTREAM_HERE]
-RUN cd [INTO_REPOSITORY]             && \
-  git fetch --all --tags --prune     && \
-  git checkout tags/${TAG} -b ${TAG} && \
-  [BUILD_CMD_HERE]
+RUN cd [INTO_REPOSITORY]               && \
+    git fetch --all --tags --prune     && \
+    git checkout tags/${TAG} -b ${TAG} && \
+    [BUILD_CMD_HERE]
 
 FROM ubi
 RUN microdnf update -y && \ 
